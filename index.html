@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <title>Note</title>
+  </head>
+  <body class="d-flex justify-content-center align-items-center p-5" id="body">
+    <div class="container h rounded p-2" id="container">
+      <header
+        class="d-flex justify-content-between p-1 bg-light-subtle align-items-center"
+        id="head"
+      >
+        <h1 class="align-self-start rounded-pill p-3 ">
+          Notes
+        </h1>
+        <div class="btn" id="theme">change theme to Dark</div>
+      </header>
+      <div class="b-container w-100 mt-2 d-flex">
+        <div class="history border-end p-3">
+          <div class="search">
+            <label for="search">search</label>
+            <input
+              type="text"
+              class="form-control"
+              id="search"
+              oninput="search(this.value)"
+            />
+          </div>
+          <div class="h-history">
+            <h5>Your Notes</h5>
+          </div>
+          <div
+            class="b-history d-flex justify-content-between align-content-center flex-column"
+            id="history"
+          ></div>
+        </div>
+        <div class="note w-75 p-1">
+          <div class="tit ms-3 w-50">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" />
+          </div>
+          <div class="write mt-3 ms-3">
+            <textarea class="form-control i-write" id="Textarea"></textarea>
+            <div class="input-group mb-3 w-25 mt-2">
+              <input type="file" class="form-control" id="file" />
+            </div>
+          </div>
+
+          <div class="button mt-2">
+            <div class="btn btn-secondary" id="finish">ADD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
