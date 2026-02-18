@@ -6,10 +6,8 @@ let text = document.getElementById("Textarea");
 let container = document.getElementById("container");
 let head = document.getElementById("head");
 let finish = document.getElementById("finish");
-let file = document.getElementById("file");
 let history = document.getElementById("history");
-let currentIndex = null;
-
+var currentIndex = null;
 var notes = [];
 if (localStorage.getItem("Notes") != null) {
   notes = JSON.parse(localStorage.getItem("Notes"));
@@ -19,7 +17,6 @@ theme.addEventListener("click", () => {
   if (theme.innerHTML.includes("Dark")) {
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].classList.add("theme");
-      console.log(inputs[i]);
     }
     title.classList.add("theme");
     text.classList.add("theme");
@@ -28,7 +25,7 @@ theme.addEventListener("click", () => {
 
     body.classList.add("t-body");
     container.classList.add("t-container");
-    theme.innerHTML = "Change them to white ";
+    theme.innerHTML = "Change theme to white ";
   } else {
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].classList.remove("theme");
@@ -42,7 +39,7 @@ theme.addEventListener("click", () => {
     container.classList.remove("t-container");
     head.classList.add("bg-light-subtle");
 
-    theme.innerHTML = "Change them to Dark ";
+    theme.innerHTML = "Change theme to Dark ";
   }
 });
 
@@ -55,9 +52,11 @@ finish.addEventListener("click", () => {
 
   var note = {
     title: title.value,
-    text: text.value,
-    file: file.value,
+    text: text.value,   
+     file: file.value
   };
+  console.log(note)
+
 
   if (currentIndex !== null) {
 
@@ -94,13 +93,14 @@ finish.addEventListener("click", () => {
 function display() {
   var p = "";
   for (var i = 0; i < notes.length; i++) {
-    p += `<div class="mt-3"><tr  > 
-
-  <td >${notes[i].title}</td>
-   
-    <td><button onclick="Delete(${i})" class="btn btn-outline-danger">delete</button></td>
+    var str=notes[i].title;
+    p += `<div class="mt-3 d-flex justify-content-between flex-wrap"><tr  > 
+  <div>  <td >${str.slice(0,8)}</td>
+</div>
+   <div> <td><button onclick="Delete(${i})" class="btn btn-outline-danger">delete</button></td>
     <td><button onclick="Show(${i})" class="btn btn-outline-secondary">Show</button></td>
-
+</div>
+   
     
      </tr></div>`;
   }
@@ -110,13 +110,14 @@ function search(title) {
   var x = "";
   for (var i = 0; i < notes.length; i++) {
     if (notes[i].title.toLowerCase().includes(title.toLowerCase()) == true) {
-      x += `<div class="mt-3 "><tr  > 
-
-  <td >${notes[i].title}</td>
-   
-    <td><button onclick="Delete(${i})" class="btn btn-outline-danger">delete</button></td>
+      var str=notes[i].title;
+    x+= `<div class="mt-3 d-flex justify-content-between flex-wrap"><tr  > 
+  <div>  <td >${str.slice(0,8)}</td>
+</div>
+   <div> <td><button onclick="Delete(${i})" class="btn btn-outline-danger">delete</button></td>
     <td><button onclick="Show(${i})" class="btn btn-outline-secondary">Show</button></td>
-
+</div>
+   
     
      </tr></div>`;
     }
@@ -133,6 +134,7 @@ function Show(index) {
 
   title.value = notes[index].title;
   text.value = notes[index].text;
+
 
   currentIndex = index; 
 }
