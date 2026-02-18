@@ -53,7 +53,6 @@ finish.addEventListener("click", () => {
   var note = {
     title: title.value,
     text: text.value,   
-     file: file.value
   };
   console.log(note)
 
@@ -69,7 +68,6 @@ finish.addEventListener("click", () => {
     if (noChange) {
         title.value = "";
   text.value = "";
-  file.value = "";
 
       return;
     }
@@ -83,7 +81,6 @@ finish.addEventListener("click", () => {
 
   title.value = "";
   text.value = "";
-  file.value = "";
 
   localStorage.setItem("Notes", JSON.stringify(notes));
   display();
@@ -138,4 +135,3 @@ function Show(index) {
 
   currentIndex = index; 
 }
-
